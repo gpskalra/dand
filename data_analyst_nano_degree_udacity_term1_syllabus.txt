@@ -1,0 +1,37 @@
+Core Curriculum
+This section consists of all the lessons and projects you need to complete in order to receive your certificate.
+
+10 PARTS
+8 PROJECTS
+1
+PART 1
+Welcome to Term 1!
+Welcome to the program! In this part, you’ll get an orientation into using our classroom and services. You’ll also get advice for making the best use of your time while enrolled in this program.
+
+Project: Explore Weather Trends
+Estimated time: 7 days
+2
+PART 2
+Introduction to Python
+Learn Python programming fundamentals such as data types and structures, variables, loops, and functions.
+
+Project: Explore US Bikeshare Data
+Estimated time: 28 days
+3
+PART 3
+Introduction to Data Analysis
+Learn the data analysis process of questioning, wrangling, exploring, analyzing, and communicating data. Learn how to work with data in Python using libraries like NumPy and Pandas.
+
+Project: Investigate a Dataset
+Estimated time: 30 days
+4
+PART 4
+Practical Statistics
+Learn how to apply inferential statistics and probability to important, real-world scenarios, such as analyzing A/B tests and building supervised learning models.
+
+Project: Analyze A/B Test Results
+Estimated time: 29 days
+5
+PART 5
+Congratulations and Next Steps
+Estimated time: 10 minutes
