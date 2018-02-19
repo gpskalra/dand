@@ -33,7 +33,7 @@ def get_city():
     '''
     city = input('\nHello! Let\'s explore some US bikeshare data!\n'
                  'Would you like to see data for Chicago, New York, or Washington?\n')
-    log('User entered : ' + city)
+    log('get_city(): User entered : ' + city)
     files = {'chicago':chicago, 'new york':new_york_city, 'washington':washington}
     while city.lower() not in files:
         city = input('\nYou have entered an invalid city name.\n'
@@ -46,20 +46,47 @@ def get_city():
                      'WaSHiNgtOn is a valid input.\n'
                      'Lets try again.\n'
                      'Would you like to see data for Chicago, New York, or Washington?\n')
-        log('User entered : ' + city)
+        log('get_city(): User entered : ' + city)
     return files[city.lower()]
 
 def get_time_period():
     '''Asks the user for a time period and returns the specified filter.
 
+    Test Inputs used:
+    day
+    month
+    none
+    asdfasdfasdf
+    mnth1
+    ""
+    "    "
+    DAy
+    nil
+    January
+
     Args:
         none.
     Returns:
-        TODO: fill out return type and description (see get_city for an example)
+        (str) time period filter chosen by user: "day", "month" or "none"
     '''
     time_period = input('\nWould you like to filter the data by month, day, or not at'
                         ' all? Type "none" for no time filter.\n')
-    # TODO: handle raw input and complete function
+    log('get_time_period(): User entered : ' + time_period)
+    time_periods = ['day', 'month', 'none']
+    while time_period.lower() not in time_periods:
+        time_period = input('\nYou have entered an invalid time period.\n'
+                     'Please enter one of the following:\n'
+                     'day\n'
+                     'month\n'
+                     'none\n\n'
+                     'Note that case does not matter, so\n'
+                     'DAY is a valid input and so are\n'
+                     'day and DaY.\n'
+                     'Lets try again.\n'
+                     'Would you like to filter the data by month, day, or not at'
+                     ' all? Type "none" for no time filter.\n')
+        log('get_time_period(): User entered : ' + time_period)
+    return time_period.lower()
 
 
 def get_month():
@@ -180,6 +207,7 @@ def statistics():
 
     # Filter by time period (month, day, none)
     time_period = get_time_period()
+    log('get_time_period() returned ' + time_period)
 
     print('Calculating the first statistic...')
 
