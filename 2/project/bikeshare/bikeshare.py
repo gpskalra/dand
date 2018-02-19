@@ -1,5 +1,10 @@
 ## TODO: import all necessary packages and functions
 
+# Logging
+DEBUG = True
+def log(x):
+    if DEBUG:
+        print(x)
 
 ## Filenames
 chicago = 'chicago.csv'
@@ -10,6 +15,17 @@ washington = 'washington.csv'
 def get_city():
     '''Asks the user for a city and returns the filename for that city's bike share data.
 
+    Test Inputs used: (This should ideally be in test code along with their expected
+    outputs! I am doing some MANUAL UNIT TESTING !!)
+    Chicago
+    NewYork
+    Washington
+    asdfasdfasdf
+    new york city
+    ""
+    "    "
+    NEW YORK
+
     Args:
         none.
     Returns:
@@ -17,8 +33,21 @@ def get_city():
     '''
     city = input('\nHello! Let\'s explore some US bikeshare data!\n'
                  'Would you like to see data for Chicago, New York, or Washington?\n')
-    # TODO: handle raw input and complete function
-
+    log('User entered : ' + city)
+    files = {'chicago':chicago, 'new york':new_york_city, 'washington':washington}
+    while city.lower() not in files:
+        city = input('\nYou have entered an invalid city name.\n'
+                     'Please enter one of the following:\n'
+                     'Chicago\n'
+                     'New York\n'
+                     'Washington\n\n'
+                     'Note that case does not matter but spaces do, so\n'
+                     'NewYork is an invalid input and\n'
+                     'WaSHiNgtOn is a valid input.\n'
+                     'Lets try again.\n'
+                     'Would you like to see data for Chicago, New York, or Washington?\n')
+        log('User entered : ' + city)
+    return files[city.lower()]
 
 def get_time_period():
     '''Asks the user for a time period and returns the specified filter.
@@ -147,6 +176,7 @@ def statistics():
     '''
     # Filter by city (Chicago, New York, Washington)
     city = get_city()
+    log('get_city() returned ' + city)
 
     # Filter by time period (month, day, none)
     time_period = get_time_period()
@@ -156,20 +186,20 @@ def statistics():
     # What is the most popular month for start time?
     if time_period == 'none':
         start_time = time.time()
-        
+
         #TODO: call popular_month function and print the results
-        
+
         print("That took %s seconds." % (time.time() - start_time))
         print("Calculating the next statistic...")
 
     # What is the most popular day of week (Monday, Tuesday, etc.) for start time?
     if time_period == 'none' or time_period == 'month':
         start_time = time.time()
-        
+
         # TODO: call popular_day function and print the results
-        
+
         print("That took %s seconds." % (time.time() - start_time))
-        print("Calculating the next statistic...")    
+        print("Calculating the next statistic...")
 
     start_time = time.time()
 
