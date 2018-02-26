@@ -1,5 +1,3 @@
-## TODO: import all necessary packages and functions
-
 # Logging
 DEBUG = True
 def log(x):
@@ -10,6 +8,7 @@ def log(x):
 chicago = 'chicago.csv'
 new_york_city = 'new_york_city.csv'
 washington = 'washington.csv'
+months = ['january', 'february', 'march', 'april', 'may', 'june']
 
 
 def get_city():
@@ -92,25 +91,54 @@ def get_time_period():
 def get_month():
     '''Asks the user for a month and returns the specified month.
 
+    Test user inputs; Return value:
+
+    january; january
+    february; february
+    march; march
+    april; april
+    may; may
+    june; june
+    jan, feb, mar, apr, may; may
+    1, 2, 3, 4, 5, 6, JAN, JANuary; january
+
     Args:
         none.
     Returns:
-        TODO: fill out return type and description (see get_city for an example)
+        (str) Month chosen by user.
+              One of "january", "february", "march", "april", "may", and "june".
     '''
     month = input('\nWhich month? January, February, March, April, May, or June?\n')
-    # TODO: handle raw input and complete function
+    log("get_month(): User entered : " + month)
+    while month.lower() not in months:
+        month = input('\n This is an invalid input.\n'
+                      'Please enter a valid month name:\n'
+                      'Which month? January, February, March, April, May, or June?\n')
+        log("get_month(): User entered : " + month)
+    return month.lower()
 
-
-def get_day(month):
+def get_day():
     '''Asks the user for a day and returns the specified day.
+
+    Test user inputs; Return value:
+
+    mon, MON, monday, MONDAY, 1; 1
+    tues, TUES, tuesday, TUESDAY, 2; 2
+    wed, WED, wednesday, WEDNESDAY, 3; 3
+    thurs, THURS, thursday, THURSDAY, 4; 4
+    fri, FRI, friday, FRIDAY, 5; 5
+    sat, SAT, saturday, SATURDAY, 6; 6
+    sun, SUN, sunday, SUNDAY, 7; 7
+    8, -1, 13, hello, none, nil, 1; 1
 
     Args:
         none.
     Returns:
-        TODO: fill out return type and description (see get_city for an example)
+        (int) Day of the week. 1 represents Monday, 2 Tuesday, ..., 7 Sunday.
     '''
-    day = input('\nWhich day? Please type your response as an integer.\n')
-    # TODO: handle raw input and complete function
+    day = input('\nWhich day? Please type your response as an integer.\n'
+                'Enter 1 for Monday, 2 for Tuesday, ..., 7 for Sunday.\n')
+    # TODO: Complete this function
 
 
 def popular_month(city_file, time_period):
@@ -203,11 +231,18 @@ def statistics():
     '''
     # Filter by city (Chicago, New York, Washington)
     city = get_city()
-    log('get_city() returned ' + city)
+    log('statistics(): get_city() returned ' + city)
 
     # Filter by time period (month, day, none)
     time_period = get_time_period()
-    log('get_time_period() returned ' + time_period)
+    log('statistics(): get_time_period() returned ' + time_period)
+
+    if time_period == 'month':
+        month = get_month()
+        log('statistics(): get_month() returned ' + month)
+    if time_period == 'day':
+        day = get_day()
+        log('statistics(): get_day() returned ' + day)
 
     print('Calculating the first statistic...')
 
